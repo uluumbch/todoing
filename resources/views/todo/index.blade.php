@@ -10,12 +10,6 @@
             <input class="input input-bordered join-item" placeholder="Search" />
           </div>
         </div>
-        <select class="select select-bordered join-item">
-          <option disabled selected>Filter</option>
-          <option>Sci-fi</option>
-          <option>Drama</option>
-          <option>Action</option>
-        </select>
         <div class="indicator">
           <button type="submit" class="btn btn-accent join-item">Search</button>
         </div>
