@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <h1>add Todo List</h1>
+    <h1 class="font-bold text-2xl">add Todo List</h1>
     @if ($errors->any())
         <div class="alert alert-error">
             <ul>
@@ -13,10 +13,12 @@
     @endif
     <form action="{{ route('todos.store') }}" method="post">
         @csrf
-        <input type="text" name="title" id="title" class="input input-bordered w-full" placeholder="Enter todo title">
-        <br>
-        <textarea name="description" id="description" cols="30" rows="10" class="textarea textarea-bordered"  placeholder="Enter todo description"></textarea>
-        <br>
+        <div class="mb-3">
+            <input type="text" name="title" id="title" class="input input-bordered w-full" placeholder="Enter todo title">
+        </div>
+        <div class="mb-3">
+            <textarea name="description" id="description" class="textarea textarea-bordered w-full"  placeholder="Enter todo description"></textarea>
+        </div>
         <button class="btn btn-primary" type="submit">Create</button>
     </form>
 @endsection

@@ -2,18 +2,20 @@
 
 @section('content')
     <h1>Todo List</h1>
-    <a class="btn btn-primary" href="{{ route('todos.create') }}">Create Todo</a>
-    
-    <div class="join">
-        <div>
-          <div>
-            <input class="input input-bordered join-item" placeholder="Search" />
-          </div>
+    <form action="" method="get" class="mt-3">
+        <div class="join">
+            <div>
+                <div>
+                    <input class="input input-bordered join-item" placeholder="Search" name="q" value="{{ request('q') }}"/>
+                </div>
+            </div>
+            <div class="indicator">
+                <button type="submit" class="btn btn-accent join-item">Search</button>
+                {{-- <button type="submit" class="btn btn-accent join-item">Search</button> --}}
+                <a class="join-item btn btn-primary" href="{{ route('todos.create') }}">Create Todo</a>
+            </div>
         </div>
-        <div class="indicator">
-          <button type="submit" class="btn btn-accent join-item">Search</button>
-        </div>
-      </div>
+    </form>
     <ul>
         @forelse ($todos as $todo)
             <li class="list-decimal my-3">

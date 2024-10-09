@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TodoController extends Controller
 {
@@ -12,8 +13,18 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::where('completed', false)->get();
+        $todo = Todo::query();
+
+        // implement the search functionality with q as the query parameter
+        if ($search = request('q')) {
+            $todo->where('title', 'LIKE', "%{$search}%");
+        }
+
+        $todos = $todo->where('completed', false)->get();
         $completedTodos = Todo::where('completed', true)->get();
+
+
+
         return view('todo.index', [
             'title' => 'Todo List',
             'todos' => $todos,
@@ -43,16 +54,12 @@ class TodoController extends Controller
         Todo::create($data);
 
         return redirect()->route('todos.index');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Todo $todo)
-    {
-        
-    }
+    public function show(Todo $todo) {}
 
     /**
      * Show the form for editing the specified resource.
