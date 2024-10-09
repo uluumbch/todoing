@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>Todo List</h1>
+    <p>
+        {{ auth()->user()->name }} | {{ auth()->user()->getRoleNames()->first() }}
+    </p>
     <form action="" method="get" class="mt-3">
         <div class="join">
             <div>
@@ -12,7 +15,9 @@
             <div class="indicator">
                 <button type="submit" class="btn btn-accent join-item">Search</button>
                 {{-- <button type="submit" class="btn btn-accent join-item">Search</button> --}}
+                @role('admin')
                 <a class="join-item btn btn-primary" href="{{ route('todos.create') }}">Create Todo</a>
+                @endrole
             </div>
         </div>
     </form>

@@ -37,6 +37,7 @@ class TodoController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Todo::class);
         return view('todo.create');
     }
 
@@ -89,6 +90,9 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
+        if (!Gate::allows('hapus-todo')) {
+            abort(403);
+        }
         $todo->delete();
 
         return redirect()->route('todos.index');
