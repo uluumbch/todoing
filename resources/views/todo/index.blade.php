@@ -18,6 +18,10 @@
                 @role('admin')
                 <a class="join-item btn btn-primary" href="{{ route('todos.create') }}">Create Todo</a>
                 @endrole
+                {{-- atau --}}
+                {{-- @can('create', 'App\Models\Todo')
+                <a class="join-item btn btn-primary" href="{{ route('todos.create') }}">Create Todo</a>
+                @endcan --}}
             </div>
         </div>
     </form>
